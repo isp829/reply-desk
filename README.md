@@ -3,7 +3,7 @@
 쇼핑몰 고객 문의를 분류하고 답변 초안을 작성하는 웹 앱입니다.  
 대상 사용자: 고객 문의를 직접 처리하는 소규모 온라인 쇼핑몰 운영자
 
-기획서: [PRD.md](PRD.md)
+기획서: [기획서(PRD).md](기획서(PRD).md)
 
 배포 링크: https://reply-desk-isp829.azurewebsites.net
 

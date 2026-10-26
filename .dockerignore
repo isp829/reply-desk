@@ -1,0 +1,8 @@
+.env
+.git
+.venv
+venv
+__pycache__
+*.pyc
+copilot-prompt.md
+server.log

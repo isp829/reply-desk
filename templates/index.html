@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>Reply Desk</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Reply Desk</h1>
+      <nav><a href="/">문의 처리</a><a href="/inquiries">문의 목록</a><a href="/admin">관리</a></nav>
+    </header>
+    <section class="card">
+      <h2>고객 문의 처리</h2>
+      {% if error %}<p class="error">{{ error }}</p>{% endif %}
+      <form method="post" action="/inquiries" onsubmit="this.querySelector('button').disabled=true; this.querySelector('button').textContent='처리 중... (최대 1분)';">
+        <label>고객명<input name="customer_name" value="{{ form.customer_name or '' }}" required></label>
+        <label>주문번호<input name="order_number" value="{{ form.order_number or '' }}" placeholder="ORD-1001" required></label>
+        <label>문의 내용<textarea name="inquiry" maxlength="2000" required>{{ form.inquiry or '' }}</textarea></label>
+        <button type="submit">문의 처리</button>
+      </form>
+    </section>
+    {% if result %}
+    <section class="card result">
+      <p class="draft-label">AI가 작성한 초안</p>
+      <div class="badges"><span class="badge">{{ result.category }}</span>{% if result.anger %}<span class="badge">불만도 {{ result.anger }}</span>{% endif %}</div>
+      <p class="reply">{{ result.reply }}</p>
+      {% if result.refund_status == '환불완료' %}<p class="success">환불상태: 환불완료</p>{% endif %}
+    </section>
+    {% endif %}
+  </main>
+</body>
+</html>

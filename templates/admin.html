@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>관리 - Reply Desk</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Reply Desk</h1>
+      <nav><a href="/">문의 처리</a><a href="/inquiries">문의 목록</a><a href="/admin">관리</a></nav>
+    </header>
+    <section class="card">
+      <h2>데이터 초기화</h2>
+      <p>샘플 주문과 처리한 문의를 처음 상태로 되돌립니다.</p>
+      {% if message %}<p class="success">{{ message }}</p>{% endif %}
+      {% if error %}<p class="error">{{ error }}</p>{% endif %}
+      <form method="post" action="/admin/reset">
+        <label>관리자 비밀번호<input type="password" name="password" required></label>
+        <button type="submit">초기화</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

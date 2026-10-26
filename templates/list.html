@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>문의 목록 - Reply Desk</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Reply Desk</h1>
+      <nav><a href="/">문의 처리</a><a href="/inquiries">문의 목록</a><a href="/admin">관리</a></nav>
+    </header>
+    <section class="card">
+      <h2>문의 목록</h2>
+      <form method="get" class="filter">
+        <label>환불상태
+          <select name="refund_filter">
+            <option value="all" {% if refund_filter == 'all' %}selected{% endif %}>전체</option>
+            <option value="환불완료" {% if refund_filter == '환불완료' %}selected{% endif %}>환불완료</option>
+            <option value="없음" {% if refund_filter == '없음' %}selected{% endif %}>없음</option>
+          </select>
+        </label>
+        <button type="submit">필터 적용</button>
+      </form>
+      {% if inquiries %}
+      <table>
+        <thead><tr><th>주문번호</th><th>문의</th><th>유형</th><th>불만도</th><th>환불상태</th></tr></thead>
+        <tbody>
+        {% for item in inquiries %}
+          <tr><td>{{ item.order_number }}</td><td>{{ item.inquiry }}</td><td>{{ item.category }}</td><td>{{ item.anger or '-' }}</td><td>{{ item.refund_status }}</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      {% else %}<p>처리한 문의가 없습니다.</p>{% endif %}
+    </section>
+  </main>
+</body>
+</html>

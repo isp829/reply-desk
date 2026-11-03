@@ -34,4 +34,4 @@
 
 ## 에이전트 구성
 
-`agent-framework-github-copilot`의 `GitHubCopilotAgent` 두 개를 사용합니다. 설치된 최신 API에서는 `agent_framework.orchestrations.SequentialBuilder`로 순차 워크플로를 만들고, `as_agent()`로 실행합니다. 구형 설치에서 제공되는 `SequentialOrchestrator`도 호환 경로로 지원합니다.
+`agent-framework-github-copilot`의 `GitHubCopilotAgent` 두 개를 사용합니다. 설치된 최신 API에서는 `agent_framework.orchestrations.SequentialBuilder`로 순차 워크플로를 만들고, `as_agent()`로 실행합니다. 
